@@ -29,6 +29,27 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
         nextButton.isHidden = false
         setupBackgrounds()
         
+        // タブバーの作成
+                let tabBar = UITabBar()
+                
+                // タブバーのフレームを設定
+                tabBar.frame = CGRect(x: 0, y: view.frame.height - 87, width: view.frame.width, height: 87)
+                
+                // タブバーの角を丸める
+                tabBar.layer.cornerRadius = 20
+                tabBar.layer.masksToBounds = false
+                
+                // dropShadowの設定
+                tabBar.layer.shadowColor = UIColor.black.cgColor
+                tabBar.layer.shadowOpacity = 0.2
+                tabBar.layer.shadowOffset = CGSize(width: 0, height: -0.33)
+                tabBar.layer.shadowRadius = 5
+                
+                // タブバーをビューに追加
+                view.addSubview(tabBar)
+        
+        
+        
         AVAudioSession.sharedInstance().requestRecordPermission { granted in
             if granted {
                 print("Permission granted")
@@ -113,8 +134,10 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
                     
                     let maxEmotionValue = max(happiness, disgust, neutral, sadness, anger)
                     if maxEmotionValue == neutral {
-                        
                         self.waveView.waveColor = .gray
+                    }
+                    if maxEmotionValue == sadness {
+                        self.waveView.waveColor = .blue
                     }
                     // 例えば取り出せた文章を出せるよね
                     self.answerBackgound.text = text

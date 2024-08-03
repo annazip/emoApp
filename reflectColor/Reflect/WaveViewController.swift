@@ -9,7 +9,8 @@ import UIKit
 
 class WaveView: UIView {
     
-    var waveColor: UIColor = .blue {
+    // デフォルトの波線
+    var waveColor = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 0.1) {
         didSet {
             setNeedsDisplay()
         }
@@ -29,6 +30,7 @@ class WaveView: UIView {
     }
     
     private func setup() {
+        backgroundColor = .white
         displayLink = CADisplayLink(target: self, selector: #selector(updateWave))
         displayLink.add(to: .main, forMode: .default)
     }
@@ -47,7 +49,11 @@ class WaveView: UIView {
         
         context.clear(rect)
         
-        //波線を描く
+        // 背景を白で塗りつぶす
+        context.setFillColor(UIColor.white.cgColor)
+        context.fill(rect)
+        
+        // 波線を描く
         context.setLineWidth(2.0)
         context.setStrokeColor(waveColor.cgColor)
         
@@ -66,22 +72,12 @@ class WaveView: UIView {
         path.addLine(to: CGPoint(x: 0, y: rect.height))
         path.closeSubpath()
         
-        // 波線より上を白色に塗りつぶす
-        let upperPath = CGMutablePath()
-        upperPath.addRect(CGRect(x: 0, y: 0, width: width, height: height+waveHeight))
-        
-        context.setFillColor(waveColor.withAlphaComponent(1).cgColor)
-        context.addPath(path)
-        context.fillPath()
-        
-     //波線の下を青色に塗りつぶす
+        // 波線の色で塗りつぶす
         context.setFillColor(waveColor.cgColor)
         context.addPath(path)
         context.fillPath()
-        
-        
     }
-    
+
     deinit {
         displayLink.invalidate()
     }
@@ -99,8 +95,7 @@ class WaveViewController: UIViewController {
         view.addSubview(waveView)
         
         // 色を変更する場合
-        waveView.waveColor = .gray
+        // waveView.waveColor = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 0.1)
     }
 }
-
 
