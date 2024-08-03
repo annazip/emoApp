@@ -18,6 +18,8 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
     var retryCount = 0
     let maxRetryCount = 3
     var exampleURL: URL!
+    var waveView: WaveView!
+    
     @IBOutlet var nextButton: UIBarButtonItem!
     @IBOutlet var eachBackgrounds: [UILabel]!
     @IBOutlet var answerBackgound: UILabel!
@@ -43,6 +45,11 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
             print("Failed to set audio session category and mode: \(error)")
             return
         }
+        
+        waveView = WaveView(frame: view.bounds)
+        waveView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(waveView)
+        view.sendSubviewToBack(waveView)
     }
     
     func setupBackgrounds() {
@@ -99,20 +106,16 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
                 print("Neutral: \(neutral)")
                 print("Sadness: \(sadness)")
                 print("Anger: \(anger)")
-        
+                
                 print("Text: \(text)")
                 
-               
-                let maxEmotionValue = max(happiness, disgust, neutral, sadness, anger)
-                
-                
-                if maxEmotionValue == neutral {
-                    DispatchQueue.main.async {
-                        self.presentWaveViewController()
-                    }
-                }
-                
                 DispatchQueue.main.async {
+                    
+                    let maxEmotionValue = max(happiness, disgust, neutral, sadness, anger)
+                    if maxEmotionValue == neutral {
+                        
+                        self.waveView.waveColor = .gray
+                    }
                     // 例えば取り出せた文章を出せるよね
                     self.answerBackgound.text = text
                     // 例えばここで次へボタン復活させたら次画面いける

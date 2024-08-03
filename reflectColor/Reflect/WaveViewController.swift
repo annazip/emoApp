@@ -46,9 +46,8 @@ class WaveView: UIView {
         let waveHeight: CGFloat = 20
         
         context.clear(rect)
-        context.setFillColor(UIColor.clear.cgColor)
-        context.fill(rect)
         
+        //波線を描く
         context.setLineWidth(2.0)
         context.setStrokeColor(waveColor.cgColor)
         
@@ -62,19 +61,25 @@ class WaveView: UIView {
             path.addLine(to: CGPoint(x: x, y: y))
         }
         
-        // 波線の下を塗り潰すために、パスを下端まで閉じる
+        // 波線の下を塗り潰す
         path.addLine(to: CGPoint(x: width, y: rect.height))
         path.addLine(to: CGPoint(x: 0, y: rect.height))
         path.closeSubpath()
         
-        // 塗り潰し
+        // 波線より上を白色に塗りつぶす
+        let upperPath = CGMutablePath()
+        upperPath.addRect(CGRect(x: 0, y: 0, width: width, height: height+waveHeight))
+        
         context.setFillColor(waveColor.withAlphaComponent(1).cgColor)
         context.addPath(path)
         context.fillPath()
         
-        // 波線の描画
-//        context.addPath(path)
-//        context.strokePath()
+     //波線の下を青色に塗りつぶす
+        context.setFillColor(waveColor.cgColor)
+        context.addPath(path)
+        context.fillPath()
+        
+        
     }
     
     deinit {
@@ -97,3 +102,5 @@ class WaveViewController: UIViewController {
         waveView.waveColor = .gray
     }
 }
+
+
