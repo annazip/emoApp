@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ycX-hB-kgA">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Reflect Home View Controller-->
+        <!--今日をふりかえる-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ReflectHomeViewController" customModule="reflectColor" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,6 +37,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.96862745098039216" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="今日をふりかえる" image="message.badge.waveform.fill" catalog="system" id="9dc-nm-4Ij"/>
                     <navigationItem key="navigationItem" id="Rty-IH-qFE"/>
                     <connections>
                         <outlet property="button" destination="Pc4-DR-pJZ" id="YcR-pR-8vj"/>
@@ -45,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3841.9847328244273" y="-38.028169014084511"/>
+            <point key="canvasLocation" x="4768.7022900763359" y="-38.028169014084511"/>
         </scene>
         <!--Record Start View Controller-->
         <scene sceneID="04P-gm-xiI">
@@ -156,12 +157,12 @@
             </objects>
             <point key="canvasLocation" x="2915.2671755725191" y="695.77464788732402"/>
         </scene>
-        <!--Memory Home View Controller-->
+        <!--過去をふりかえる-->
         <scene sceneID="i39-2G-aaX">
             <objects>
                 <viewController id="pZV-Sh-ySs" customClass="MemoryHomeViewController" customModule="reflectColor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jcj-iS-Klp">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Pp-f7-OF7" customClass="FSCalendar">
@@ -193,6 +194,7 @@
                         <viewLayoutGuide key="safeArea" id="6Xm-D0-1KH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="過去をふりかえる" image="clock.arrow.2.circlepath" catalog="system" id="pt0-Jm-obf"/>
                     <navigationItem key="navigationItem" id="6fM-IL-Nhg"/>
                     <connections>
                         <outlet property="calendar" destination="8Pp-f7-OF7" id="7aV-x9-Qf3"/>
@@ -201,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXy-3Y-3o6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9558.0152671755714" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="7941" y="-38"/>
         </scene>
         <!--Memory Detail View Controller-->
         <scene sceneID="qNq-2c-mo5">
@@ -395,7 +397,7 @@
                 </label>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rY5-ce-GvT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10258.778625954197" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="8956" y="-38"/>
         </scene>
         <!--Memory More Detail View Controller-->
         <scene sceneID="FNd-cU-wNf">
@@ -432,7 +434,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtV-NL-70W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10945.801526717556" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="9763" y="-38"/>
         </scene>
         <!--Good First View Controller-->
         <scene sceneID="wyn-p5-4EC">
@@ -1118,25 +1120,6 @@
             </objects>
             <point key="canvasLocation" x="3392" y="1373"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="7Ea-rV-m1r">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ef5-bd-OLY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lHi-nT-CrK">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="pZV-Sh-ySs" kind="show" id="aUh-yB-qTQ"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i0n-HM-OKI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1988.5496183206105" y="-38.028169014084511"/>
-        </scene>
         <!--過去をふりかえる-->
         <scene sceneID="da9-bG-dWl">
             <objects>
@@ -1154,7 +1137,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lhh-Z5-1sQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8632.8244274809149" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="6779" y="-38"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RZx-bz-r7R">
@@ -1175,9 +1158,29 @@
             </objects>
             <point key="canvasLocation" x="1988.5496183206105" y="695.77464788732402"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="YnR-QV-f1R">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ycX-hB-kgA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9nb-HP-Ypa">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="4l9-OF-nJY"/>
+                        <segue destination="pZV-Sh-ySs" kind="relationship" relationship="viewControllers" id="G5d-bi-8hp"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vhd-AR-O7m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3841.9847328244273" y="-38.028169014084511"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aUh-yB-qTQ"/>
+        <segue reference="G5d-bi-8hp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.right.circle" catalog="system" width="128" height="123"/>
