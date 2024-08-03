@@ -17,6 +17,8 @@ class GoodFirstViewController: UIViewController, AVAudioRecorderDelegate{
     var retryCount = 0
     let maxRetryCount = 3
     var exampleURL: URL!
+    var waveView: WaveView!
+    
     @IBOutlet var backButton: UIButton!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var eachBackgrounds: [UILabel]!
@@ -46,6 +48,10 @@ class GoodFirstViewController: UIViewController, AVAudioRecorderDelegate{
                 print("Failed to set audio session category and mode: \(error)")
                 return
             }
+        waveView = WaveView(frame: view.bounds)
+        waveView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(waveView)
+        view.sendSubviewToBack(waveView)
         }
     
     @IBAction func back(_ sender: UIButton) {
@@ -127,38 +133,50 @@ class GoodFirstViewController: UIViewController, AVAudioRecorderDelegate{
                 }
             }
         
-            func request() {
-                    APIManager.shared.request(audioURL: recordingURL) { happiness, disgust, neutral, sadness, anger, text in
-                        if let happiness = happiness, let disgust = disgust, let neutral = neutral, let sadness = sadness, let anger = anger, let text = text {
-        
-        //                    この辺で感情の値を取り出せる！好きに使ってね！
-                            print("Happiness: \(happiness)")
-                            print("Disgust: \(disgust)")
-                            print("Neutral: \(neutral)")
-                            print("Sadness: \(sadness)")
-                            print("Anger: \(anger)")
-        //                    textも出せる！
-                            print("Text: \(text)")
-                            DispatchQueue.main.async {
-        //                        例えば取り出せた文章を出せるよね
-                                self.answerBackgound.text = text
-        //                        例えばここで次へボタン復活させたら次画面いける
-                                self.nextButton.isHidden = false
-        
-                            }
-                        } else {
-                            print("Failed to retrieve emotion or text")
-                        }
+    func request() {
+        APIManager.shared.request(audioURL: recordingURL) { happiness, disgust, neutral, sadness, anger, text in
+            if let happiness = happiness, let disgust = disgust, let neutral = neutral, let sadness = sadness, let anger = anger, let text = text {
+                
+                // この辺で感情の値を取り出せる！好きに使ってね！
+                print("Happiness: \(happiness)")
+                print("Disgust: \(disgust)")
+                print("Neutral: \(neutral)")
+                print("Sadness: \(sadness)")
+                print("Anger: \(anger)")
+                
+                print("Text: \(text)")
+                
+                DispatchQueue.main.async {
+                    
+                    let maxEmotionValue = max(happiness, disgust, neutral, sadness, anger)
+                    if maxEmotionValue == neutral {
+                        self.waveView.waveColor = .gray
                     }
+                    if maxEmotionValue == sadness {
+                        self.waveView.waveColor = .blue
+                    }
+                    // 例えば取り出せた文章を出せるよね
+                    self.answerBackgound.text = text
+                    // 例えばここで次へボタン復活させたら次画面いける
+                    self.nextButton.isHidden = false
                 }
-        
-            func getDocumentsDirectory() -> URL {
-                let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-                return paths[0]
+            } else {
+                print("Failed to retrieve emotion or text")
             }
-        
-        
-        
-        
+        }
     }
+    
+    func presentWaveViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let waveVC = storyboard.instantiateViewController(withIdentifier: "WaveViewController") as? WaveViewController {
+            self.present(waveVC, animated: true, completion: nil)
+        }
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+}
+
 
