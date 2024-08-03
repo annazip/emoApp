@@ -17,7 +17,8 @@ class GoodSecondViewController: UIViewController, AVAudioRecorderDelegate{
     var retryCount = 0
     let maxRetryCount = 3
     var exampleURL: URL!
-    @IBOutlet var nextButton: UIBarButtonItem!
+    @IBOutlet var backButton: UIButton!
+    @IBOutlet var nextButton: UIButton!
     @IBOutlet var eachBackgrounds: [UILabel]!
     @IBOutlet var answerBackgound: UILabel!
     
@@ -27,6 +28,7 @@ class GoodSecondViewController: UIViewController, AVAudioRecorderDelegate{
         //        例えば
         nextButton.isHidden = false
         setupBackgrounds()
+        self.navigationItem.hidesBackButton = true
         
         
                 AVAudioSession.sharedInstance().requestRecordPermission { granted in
@@ -47,6 +49,39 @@ class GoodSecondViewController: UIViewController, AVAudioRecorderDelegate{
             }
         }
     
+    @IBAction func back(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "確認", message: "今日のふりかえりを終了しますか？", preferredStyle: .alert)
+        
+        // "はい" アクションを追加
+        let yesAction = UIAlertAction(title: "終了", style: .destructive) { _ in
+            self.dismiss(animated: true)
+            self.tabBarController?.tabBar.isHidden = false
+        }
+        alertController.addAction(yesAction)
+        
+        // "いいえ" アクションを追加
+        let noAction = UIAlertAction(title: "戻る", style: .cancel, handler: nil)
+        alertController.addAction(noAction)
+        
+        // アラートを表示
+        self.present(alertController, animated: true) {
+            // アラートビューのサブビューをカスタマイズ
+            let alertView = alertController.view.subviews.first
+            let containerView = alertView?.subviews.first
+            let buttonContainer = containerView?.subviews.first
+
+            // カスタマイズを適用
+            for case let button as UIButton in buttonContainer?.subviews ?? [] {
+                if button.title(for: .normal) == "終了" {
+                    button.setTitleColor(.red, for: .normal)
+                    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17) // 太字に設定
+                } else if button.title(for: .normal) == "戻る" {
+                    button.setTitleColor(.blue, for: .normal)
+                    button.titleLabel?.font = UIFont.systemFont(ofSize: 17) // 細字に設定
+                }
+            }
+        }
+    }
     
     func setupBackgrounds() {
         eachBackgrounds.forEach { label in

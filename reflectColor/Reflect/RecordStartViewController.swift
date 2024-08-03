@@ -20,34 +20,16 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
     var exampleURL: URL!
     var waveView: WaveView!
     
-    @IBOutlet var nextButton: UIBarButtonItem!
+    
+    @IBOutlet var backButton: UIButton!
+    @IBOutlet var nextButton: UIButton!
     @IBOutlet var eachBackgrounds: [UILabel]!
     @IBOutlet var answerBackgound: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nextButton.isHidden = false
+//        nextButton.isHidden = false
         setupBackgrounds()
-        
-        // タブバーの作成
-                let tabBar = UITabBar()
-                
-                // タブバーのフレームを設定
-                tabBar.frame = CGRect(x: 0, y: view.frame.height - 87, width: view.frame.width, height: 87)
-                
-                // タブバーの角を丸める
-                tabBar.layer.cornerRadius = 20
-                tabBar.layer.masksToBounds = false
-                
-                // dropShadowの設定
-                tabBar.layer.shadowColor = UIColor.black.cgColor
-                tabBar.layer.shadowOpacity = 0.2
-                tabBar.layer.shadowOffset = CGSize(width: 0, height: -0.33)
-                tabBar.layer.shadowRadius = 5
-                
-                // タブバーをビューに追加
-                view.addSubview(tabBar)
-        
         
         
         AVAudioSession.sharedInstance().requestRecordPermission { granted in
@@ -82,6 +64,41 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
         answerBackgound.layer.borderWidth = 2.0
         answerBackgound.clipsToBounds = true
     }
+    
+    @IBAction func back(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "確認", message: "今日のふりかえりを終了しますか？", preferredStyle: .alert)
+        
+        // "はい" アクションを追加
+        let yesAction = UIAlertAction(title: "終了", style: .destructive) { _ in
+            self.dismiss(animated: true)
+            self.tabBarController?.tabBar.isHidden = false
+        }
+        alertController.addAction(yesAction)
+        
+        // "いいえ" アクションを追加
+        let noAction = UIAlertAction(title: "戻る", style: .cancel, handler: nil)
+        alertController.addAction(noAction)
+        
+        // アラートを表示
+        self.present(alertController, animated: true) {
+            // アラートビューのサブビューをカスタマイズ
+            let alertView = alertController.view.subviews.first
+            let containerView = alertView?.subviews.first
+            let buttonContainer = containerView?.subviews.first
+
+            // カスタマイズを適用
+            for case let button as UIButton in buttonContainer?.subviews ?? [] {
+                if button.title(for: .normal) == "終了" {
+                    button.setTitleColor(.red, for: .normal)
+                    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17) // 太字に設定
+                } else if button.title(for: .normal) == "戻る" {
+                    button.setTitleColor(.blue, for: .normal)
+                    button.titleLabel?.font = UIFont.systemFont(ofSize: 17) // 細字に設定
+                }
+            }
+        }
+    }
+
     
     @IBAction func startRecording(_ sender: UIButton) {
         if !isRecording {
@@ -162,4 +179,5 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
         return paths[0]
     }
 }
+
 

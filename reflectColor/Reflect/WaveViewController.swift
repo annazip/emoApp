@@ -10,7 +10,7 @@ import UIKit
 class WaveView: UIView {
     
     // デフォルトの波線
-    var waveColor = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 0.1) {
+    var waveColor = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 0.15) {
         didSet {
             setNeedsDisplay()
         }
@@ -94,8 +94,7 @@ class WaveViewController: UIViewController {
         waveView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(waveView)
         
-        // 色を変更する場合
-        // waveView.waveColor = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 0.1)
+    
     }
 }
 

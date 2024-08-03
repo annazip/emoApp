@@ -24,6 +24,8 @@ class ReflectHomeViewController: UIViewController {
     
     @IBAction func pushButton() {
         self.performSegue(withIdentifier: "toRecordView", sender: nil)
+        
+            tabBarController?.tabBar.isHidden = true
     }
     
 
