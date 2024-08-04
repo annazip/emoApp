@@ -12,14 +12,15 @@ import SwiftyJSON
 class APIManager {
     
     static let shared = APIManager()
+    var messageString: String?
     
     private init() {}
     
-    func request(audioURL: URL, completion: @escaping (Float?, Float?, Float?, Float?, Float?, String?) -> Void) {
-        getAPIKey(audioURL: audioURL, completion: completion)
+    func request(audioURL: URL, flag: Int, completion: @escaping (Float?, Float?, Float?, Float?, Float?, String?, String?) -> Void) {
+        getAPIKey(audioURL: audioURL, flag: flag, completion: completion)
     }
     
-    private func getAPIKey(audioURL: URL, completion: @escaping (Float?, Float?, Float?, Float?, Float?, String?) -> Void) {
+    private func getAPIKey(audioURL: URL, flag: Int, completion: @escaping (Float?, Float?, Float?, Float?, Float?, String?, String?) -> Void) {
         let headers: HTTPHeaders = [
             "accept": "application/json",
             "content-type": "application/x-www-form-urlencoded"
@@ -40,28 +41,28 @@ class APIManager {
                         let json = try JSON(data: data)
                         print("Success: \(json)")
                         if let accessToken = json["accessToken"].string {
-                            self.getEmotionText(token: accessToken, audioURL: audioURL, completion: completion)
+                            self.getEmotionText(token: accessToken, flag:flag, audioURL: audioURL, completion: completion)
                         } else {
                             print("Failed to get access token")
-                            completion(nil, nil, nil, nil, nil, nil)
+                            completion(nil, nil, nil, nil, nil, nil, nil)
                         }
                     } catch {
                         print("Failed to parse JSON: \(error)")
-                        completion(nil, nil, nil, nil, nil, nil)
+                        completion(nil, nil, nil, nil, nil, nil, nil)
                     }
                 case .failure(let error):
                     print("Error: \(error)")
-                    completion(nil, nil, nil, nil, nil, nil)
+                    completion(nil, nil, nil, nil, nil, nil, nil)
                 }
             }
     }
     
-    private func getEmotionText(token: String, audioURL: URL, completion: @escaping (Float?, Float?, Float?, Float?, Float?, String?) -> Void) {
+    private func getEmotionText(token: String, flag:Int, audioURL: URL, completion: @escaping (Float?, Float?, Float?, Float?, Float?, String?, String?) -> Void) {
         print("Audio URL: \(audioURL.absoluteString)")
         
         guard let audioData = try? Data(contentsOf:audioURL) else {
             print("Failed to convert audio file to Data")
-            completion(nil, nil, nil, nil, nil, nil)
+            completion(nil, nil, nil, nil, nil, nil, nil)
             return
         }
         
@@ -86,20 +87,22 @@ class APIManager {
                     let sadness = emotion["sadness"].floatValue
                     let anger = emotion["anger"].floatValue
                     
-                    self.getText(token: token, audioData: audioData) { text in
-                        completion(happiness, disgust, neutral, sadness, anger, text)
+                    self.getText(token: token, flag:flag, audioData: audioData) { text in
+                        self.chatGpt(rawData: text!, flag: flag) { gptResponse in
+                            completion(happiness, disgust, neutral, sadness, anger, text, gptResponse)
+                        }
                     }
                 } else {
-                    completion(nil, nil, nil, nil, nil, nil)
+                    completion(nil, nil, nil, nil, nil, nil, nil)
                 }
             case .failure(let error):
                 print("Upload Failure: \(error)")
-                completion(nil, nil, nil, nil, nil, nil)
+                completion(nil, nil, nil, nil, nil, nil, nil)
             }
         }
     }
     
-    private func getText(token: String, audioData: Data, completion: @escaping (String?) -> Void) {
+    private func getText(token: String, flag:Int, audioData: Data, completion: @escaping (String?) -> Void) {
         let headersText: HTTPHeaders = [
             "accept": "application/json",
             "Authorization": "Bearer \(token)",
@@ -126,5 +129,49 @@ class APIManager {
                 completion(nil)
             }
         }
+    }
+    
+    
+    func chatGpt(rawData:String, flag:Int, completion: @escaping (String?) -> Void){
+        
+        if flag == 0{
+            messageString = "下記の文章と下記の条件を参考にしてください。＃文章\(rawData)＃条件・今日の出来事を10字以内で要約・全体の返答としては、「お話をまとめると、今日は[出来事]が主な出来事だと感じました。正しいですか？」に当てはめて返答するように。"
+        }else if flag == 1{
+            messageString = "ほにゃらら"
+        }
+        
+        
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer ",
+            "OpenAI-Organization": "",
+            "Content-Type": "application/json"
+        ]
+        
+        let parameters: Parameters = [
+            "model": "gpt-3.5-turbo",
+            "messages": [
+                ["role": "user", "content": messageString]
+            ]
+        ]
+        
+        AF.request("https://api.openai.com/v1/chat/completions", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseData { response in
+                switch response.result {
+                case .success(let data):
+                    do {
+                        let json = try JSON(data: data)
+                        if let chatGPTresponse = json["choices"][0]["message"]["content"].string {
+                            completion(chatGPTresponse)
+                        } else {
+                            print("Failed to get content as string")
+                        }
+                    } catch {
+                        print("Failed to parse JSON: \(error)")
+                    }
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
+            }
     }
 }

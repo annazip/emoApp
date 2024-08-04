@@ -134,8 +134,9 @@ class GoodFirstViewController: UIViewController, AVAudioRecorderDelegate{
             }
         
     func request() {
-        APIManager.shared.request(audioURL: recordingURL) { happiness, disgust, neutral, sadness, anger, text in
-            if let happiness = happiness, let disgust = disgust, let neutral = neutral, let sadness = sadness, let anger = anger, let text = text {
+        APIManager.shared.request(audioURL: recordingURL, flag: 0) { happiness, disgust, neutral, sadness, anger, text, chatGPTresponse in
+                    if let happiness = happiness, let disgust = disgust, let neutral = neutral, let sadness = sadness, let anger = anger, let text = text , let chatGPTresponse = chatGPTresponse{
+                        
                 
                 // この辺で感情の値を取り出せる！好きに使ってね！
                 print("Happiness: \(happiness)")
@@ -145,18 +146,28 @@ class GoodFirstViewController: UIViewController, AVAudioRecorderDelegate{
                 print("Anger: \(anger)")
                 
                 print("Text: \(text)")
+                print("chatGPTresponse: \(chatGPTresponse)")
                 
                 DispatchQueue.main.async {
                     
                     let maxEmotionValue = max(happiness, disgust, neutral, sadness, anger)
+                    if maxEmotionValue == happiness {
+                        self.waveView.waveColor = UIColor(red: 255/255.0, green: 198/255.0, blue: 51/255.0, alpha: 1.0)
+                    }
+                    if maxEmotionValue == disgust {
+                        self.waveView.waveColor = UIColor(red: 94/255.0, green: 69/255.0, blue: 120/255.0, alpha: 1.0)
+                    }
                     if maxEmotionValue == neutral {
                         self.waveView.waveColor = .gray
                     }
                     if maxEmotionValue == sadness {
-                        self.waveView.waveColor = .blue
+                        self.waveView.waveColor = UIColor(red: 79/255.0, green: 119/255.0, blue: 167/255.0, alpha: 1.0)
+                    }
+                    if maxEmotionValue == anger {
+                        self.waveView.waveColor = UIColor(red: 122/255.0, green: 40/255.0, blue: 40/255.0, alpha: 1.0)
                     }
                     // 例えば取り出せた文章を出せるよね
-                    self.answerBackgound.text = text
+                    self.answerBackgound.text = chatGPTresponse
                     // 例えばここで次へボタン復活させたら次画面いける
                     self.nextButton.isHidden = false
                 }

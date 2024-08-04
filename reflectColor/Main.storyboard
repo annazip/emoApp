@@ -135,7 +135,7 @@
                                     </preferredSymbolConfiguration>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="back:" destination="tQs-3Y-FUr" eventType="touchUpInside" id="1nd-M5-Z2c"/>
+                                    <action selector="back:" destination="tQs-3Y-FUr" eventType="touchUpInside" id="lpb-Be-qWH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -753,7 +753,7 @@
             <objects>
                 <viewController id="HQ2-r8-b3o" customClass="BadSecondViewController" customModule="reflectColor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0V4-L6-uZs">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D33-hP-Hvk">
@@ -794,6 +794,46 @@
                                 <color key="textColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mfw-J1-s8s">
+                                <rect key="frame" x="298" y="59" width="87" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="arrowshape.right.circle" catalog="system" symbolScale="default" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    </preferredSymbolConfiguration>
+                                    <color key="baseForegroundColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="4f8-zS-pQX">
+                                <rect key="frame" x="8" y="59" width="93" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="default" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    </preferredSymbolConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="back:" destination="HQ2-r8-b3o" eventType="touchUpInside" id="ArL-6N-cHR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vso-Bd-nIc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -809,13 +849,11 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                 </buttonConfiguration>
                             </button>
-                            <connections>
-                                <segue destination="0Zy-2X-xLk" kind="show" id="VJ3-W3-zCq"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="answerBackgound" destination="qOh-1H-y4d" id="CAW-gN-wHE"/>
+                        <outlet property="backButton" destination="4f8-zS-pQX" id="3lR-Fn-ojK"/>
                         <outlet property="nextButton" destination="U7h-Vw-TAw" id="OBx-aR-G8C"/>
                         <outletCollection property="eachBackgrounds" destination="xHh-08-5jG" collectionClass="NSMutableArray" id="wag-r0-o6Z"/>
                         <outletCollection property="eachBackgrounds" destination="qOh-1H-y4d" collectionClass="NSMutableArray" id="A4U-qY-PhG"/>
@@ -830,7 +868,7 @@
             <objects>
                 <viewController id="0Zy-2X-xLk" customClass="BadThirdViewController" customModule="reflectColor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bz2-Sl-Uuk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wi5-8q-cuX">
@@ -871,6 +909,46 @@
                                 <color key="textColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ym4-QO-gRO">
+                                <rect key="frame" x="299" y="50" width="87" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="arrowshape.right.circle" catalog="system" symbolScale="default" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    </preferredSymbolConfiguration>
+                                    <color key="baseForegroundColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UPM-eW-DGl">
+                                <rect key="frame" x="9" y="50" width="93" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="default" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    </preferredSymbolConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="back:" destination="0Zy-2X-xLk" eventType="touchUpInside" id="keC-pZ-YaR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="55a-XQ-hV4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -890,6 +968,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="answerBackgound" destination="lsQ-Wt-iRp" id="7xt-oV-KC7"/>
+                        <outlet property="backButton" destination="UPM-eW-DGl" id="6l8-Ag-K7b"/>
                         <outlet property="nextButton" destination="KTV-AT-7R3" id="K8q-PA-LQA"/>
                         <outletCollection property="eachBackgrounds" destination="geg-pr-nxW" collectionClass="NSMutableArray" id="eyN-CF-bA6"/>
                         <outletCollection property="eachBackgrounds" destination="lsQ-Wt-iRp" collectionClass="NSMutableArray" id="6qX-76-KmU"/>
@@ -986,6 +1065,46 @@
                                 <color key="textColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="TAU-m7-q09">
+                                <rect key="frame" x="298" y="59" width="87" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="arrowshape.right.circle" catalog="system" symbolScale="default" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    </preferredSymbolConfiguration>
+                                    <color key="baseForegroundColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="uPx-qg-uMF">
+                                <rect key="frame" x="8" y="59" width="93" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="xmark.circle" catalog="system" symbolScale="default" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    </preferredSymbolConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="back:" destination="VEP-59-mLN" eventType="touchUpInside" id="A07-tN-pKi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nyr-2r-XpZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1001,13 +1120,11 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                 </buttonConfiguration>
                             </button>
-                            <connections>
-                                <segue destination="HQ2-r8-b3o" kind="show" id="6yh-H8-D8L"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="answerBackgound" destination="Dqf-Wk-vln" id="rt8-Z8-KnO"/>
+                        <outlet property="backButton" destination="uPx-qg-uMF" id="uyo-sd-B2c"/>
                         <outlet property="nextButton" destination="fMH-Hc-5ib" id="Dom-KJ-MG0"/>
                         <outletCollection property="eachBackgrounds" destination="vGf-uS-Oq9" collectionClass="NSMutableArray" id="TGX-M8-IGi"/>
                         <outletCollection property="eachBackgrounds" destination="Dqf-Wk-vln" collectionClass="NSMutableArray" id="Zht-7N-jCr"/>

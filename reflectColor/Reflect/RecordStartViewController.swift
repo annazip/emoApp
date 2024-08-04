@@ -28,7 +28,7 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        nextButton.isHidden = false
+        nextButton.isHidden = false
         setupBackgrounds()
         
         
@@ -133,8 +133,9 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func request() {
-        APIManager.shared.request(audioURL: recordingURL) { happiness, disgust, neutral, sadness, anger, text in
-            if let happiness = happiness, let disgust = disgust, let neutral = neutral, let sadness = sadness, let anger = anger, let text = text {
+        APIManager.shared.request(audioURL: recordingURL, flag: 0) { happiness, disgust, neutral, sadness, anger, text, chatGPTresponse in
+                    if let happiness = happiness, let disgust = disgust, let neutral = neutral, let sadness = sadness, let anger = anger, let text = text , let chatGPTresponse = chatGPTresponse{
+                        
                 
                 // この辺で感情の値を取り出せる！好きに使ってね！
                 print("Happiness: \(happiness)")
@@ -144,6 +145,7 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
                 print("Anger: \(anger)")
                 
                 print("Text: \(text)")
+                print("chatGPTresponse: \(chatGPTresponse)")
                 
                 DispatchQueue.main.async {
                     
@@ -164,7 +166,7 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
                         self.waveView.waveColor = UIColor(red: 122/255.0, green: 40/255.0, blue: 40/255.0, alpha: 1.0)
                     }
                     // 例えば取り出せた文章を出せるよね
-                    self.answerBackgound.text = text
+                    self.answerBackgound.text = chatGPTresponse
                     // 例えばここで次へボタン復活させたら次画面いける
                     self.nextButton.isHidden = false
                 }
