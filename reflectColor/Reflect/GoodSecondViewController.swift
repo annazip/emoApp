@@ -135,7 +135,7 @@ class GoodSecondViewController: UIViewController, AVAudioRecorderDelegate{
     }
     
     func request() {
-        APIManager.shared.request(audioURL: recordingURL, flag: 0) { happiness, disgust, neutral, sadness, anger, text, chatGPTresponse in
+        APIManager.shared.request(audioURL: recordingURL, flag: 4) { happiness, disgust, neutral, sadness, anger, text, chatGPTresponse in
                     if let happiness = happiness, let disgust = disgust, let neutral = neutral, let sadness = sadness, let anger = anger, let text = text , let chatGPTresponse = chatGPTresponse{
                         
                 

@@ -91,7 +91,6 @@
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="startRecording:" destination="VEP-59-mLN" eventType="touchUpInside" id="0H8-YI-QXq"/>
                                     <action selector="startRecording:" destination="tQs-3Y-FUr" eventType="touchUpInside" id="yba-La-gcC"/>
                                 </connections>
                             </button>
@@ -113,6 +112,9 @@
                                     </preferredSymbolConfiguration>
                                     <color key="baseForegroundColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="next:" destination="tQs-3Y-FUr" eventType="touchUpInside" id="JFu-hu-UDl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="zI5-1u-dTB">
                                 <rect key="frame" x="8" y="56" width="93" height="44"/>
@@ -539,7 +541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TgY-bl-2br" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2687.7862595419847" y="1372.5352112676057"/>
+            <point key="canvasLocation" x="3610" y="1373"/>
         </scene>
         <!--Summary View Controller-->
         <scene sceneID="jbl-1q-tRk">
@@ -907,25 +909,6 @@
                                 <color key="textColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ym4-QO-gRO">
-                                <rect key="frame" x="299" y="50" width="87" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="arrowshape.right.circle" catalog="system" symbolScale="default" renderingMode="hierarchical">
-                                        <hierarchicalColors>
-                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <color systemColor="tertiaryLabelColor"/>
-                                        </hierarchicalColors>
-                                    </imageReference>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                    </preferredSymbolConfiguration>
-                                    <color key="baseForegroundColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </buttonConfiguration>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UPM-eW-DGl">
                                 <rect key="frame" x="9" y="50" width="93" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -947,6 +930,25 @@
                                     <action selector="back:" destination="0Zy-2X-xLk" eventType="touchUpInside" id="keC-pZ-YaR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ewQ-1i-tlj">
+                                <rect key="frame" x="290" y="50" width="87" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="checkmark.circle.fill" catalog="system" symbolScale="default" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.97254901959999995" green="0.96862745100000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <color red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                    </preferredSymbolConfiguration>
+                                    <color key="baseForegroundColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="55a-XQ-hV4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -967,7 +969,7 @@
                     <connections>
                         <outlet property="answerBackgound" destination="lsQ-Wt-iRp" id="7xt-oV-KC7"/>
                         <outlet property="backButton" destination="UPM-eW-DGl" id="6l8-Ag-K7b"/>
-                        <outlet property="nextButton" destination="KTV-AT-7R3" id="K8q-PA-LQA"/>
+                        <outlet property="nextButton" destination="ewQ-1i-tlj" id="YPh-rF-0pQ"/>
                         <outletCollection property="eachBackgrounds" destination="geg-pr-nxW" collectionClass="NSMutableArray" id="eyN-CF-bA6"/>
                         <outletCollection property="eachBackgrounds" destination="lsQ-Wt-iRp" collectionClass="NSMutableArray" id="6qX-76-KmU"/>
                         <segue destination="oMN-FN-JA5" kind="show" id="gCh-cZ-e49"/>
@@ -1044,9 +1046,6 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="20"/>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="startRecording:" destination="VEP-59-mLN" eventType="touchUpInside" id="LEx-De-V0b"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqf-Wk-vln">
                                 <rect key="frame" x="28" y="350" width="339" height="187"/>
@@ -1082,6 +1081,9 @@
                                     </preferredSymbolConfiguration>
                                     <color key="baseForegroundColor" red="0.098039215690000001" green="0.17254901959999999" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="startRecording:" destination="VEP-59-mLN" eventType="touchUpInside" id="7S5-Jl-neZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="uPx-qg-uMF">
                                 <rect key="frame" x="8" y="59" width="93" height="44"/>
@@ -1101,7 +1103,7 @@
                                     </preferredSymbolConfiguration>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="back:" destination="VEP-59-mLN" eventType="touchUpInside" id="A07-tN-pKi"/>
+                                    <action selector="back:" destination="VEP-59-mLN" eventType="touchUpInside" id="9vT-jO-oVe"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1122,11 +1124,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="answerBackgound" destination="Dqf-Wk-vln" id="rt8-Z8-KnO"/>
-                        <outlet property="backButton" destination="uPx-qg-uMF" id="uyo-sd-B2c"/>
-                        <outlet property="nextButton" destination="fMH-Hc-5ib" id="Dom-KJ-MG0"/>
-                        <outletCollection property="eachBackgrounds" destination="vGf-uS-Oq9" collectionClass="NSMutableArray" id="TGX-M8-IGi"/>
-                        <outletCollection property="eachBackgrounds" destination="Dqf-Wk-vln" collectionClass="NSMutableArray" id="Zht-7N-jCr"/>
+                        <outlet property="answerBackgound" destination="Dqf-Wk-vln" id="Xd5-Z7-JWg"/>
+                        <outlet property="backButton" destination="uPx-qg-uMF" id="cqq-Yt-oYY"/>
+                        <outlet property="nextButton" destination="TAU-m7-q09" id="VV6-1b-oTR"/>
+                        <outletCollection property="eachBackgrounds" destination="Dqf-Wk-vln" collectionClass="NSMutableArray" id="AuE-Je-ztf"/>
+                        <outletCollection property="eachBackgrounds" destination="vGf-uS-Oq9" collectionClass="NSMutableArray" id="tKU-N9-gUn"/>
                         <segue destination="HQ2-r8-b3o" kind="show" id="qGH-Iv-sQc"/>
                     </connections>
                 </viewController>
@@ -1172,7 +1174,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="その出来事を再び体験するためにできることはなんでしょうか？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bju-yb-udD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="つまり、今日は〜ということがあったのですね。その出来事を再び体験するためにできることはなんでしょうか？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bju-yb-udD">
                                 <rect key="frame" x="28" y="150" width="339" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -1236,7 +1238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QeE-dc-8Au" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3392" y="1373"/>
+            <point key="canvasLocation" x="4318" y="1373"/>
         </scene>
         <!--過去をふりかえる-->
         <scene sceneID="da9-bG-dWl">

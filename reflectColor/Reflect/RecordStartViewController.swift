@@ -1,10 +1,3 @@
-//
-//  RecordStartViewController.swift
-//  reflectColor
-//
-//  Created by 森杏菜 on 2024/06/23.
-//
-
 import UIKit
 import Alamofire
 import AVFoundation
@@ -21,6 +14,8 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
     var waveView: WaveView!
     
     
+    var happiness: Float = 0.0
+    
     @IBOutlet var backButton: UIButton!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var eachBackgrounds: [UILabel]!
@@ -30,7 +25,6 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
         super.viewDidLoad()
         nextButton.isHidden = false
         setupBackgrounds()
-        
         
         AVAudioSession.sharedInstance().requestRecordPermission { granted in
             if granted {
@@ -68,25 +62,20 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func back(_ sender: UIButton) {
         let alertController = UIAlertController(title: "確認", message: "今日のふりかえりを終了しますか？", preferredStyle: .alert)
         
-        // "はい" アクションを追加
         let yesAction = UIAlertAction(title: "終了", style: .destructive) { _ in
             self.dismiss(animated: true)
             self.tabBarController?.tabBar.isHidden = false
         }
         alertController.addAction(yesAction)
         
-        // "いいえ" アクションを追加
         let noAction = UIAlertAction(title: "戻る", style: .cancel, handler: nil)
         alertController.addAction(noAction)
         
-        // アラートを表示
         self.present(alertController, animated: true) {
-            // アラートビューのサブビューをカスタマイズ
             let alertView = alertController.view.subviews.first
             let containerView = alertView?.subviews.first
             let buttonContainer = containerView?.subviews.first
 
-            // カスタマイズを適用
             for case let button as UIButton in buttonContainer?.subviews ?? [] {
                 if button.title(for: .normal) == "終了" {
                     button.setTitleColor(.red, for: .normal)
@@ -96,11 +85,9 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
             }
         }
     }
-
     
     @IBAction func startRecording(_ sender: UIButton) {
         if !isRecording {
-            // スタートする時
             isRecording = true
             let audioFilename = getDocumentsDirectory().appendingPathComponent("recording2.raw")
             recordingURL = audioFilename
@@ -123,7 +110,6 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
                 print("Failed to start recording: \(error)")
             }
         } else {
-            // 録音停止する時
             audioRecorder?.stop()
             audioRecorder = nil
             print("Recording stopped")
@@ -134,10 +120,11 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
     
     func request() {
         APIManager.shared.request(audioURL: recordingURL, flag: 0) { happiness, disgust, neutral, sadness, anger, text, chatGPTresponse in
-                    if let happiness = happiness, let disgust = disgust, let neutral = neutral, let sadness = sadness, let anger = anger, let text = text , let chatGPTresponse = chatGPTresponse{
-                        
+            if let happiness = happiness, let disgust = disgust, let neutral = neutral, let sadness = sadness, let anger = anger, let text = text , let chatGPTresponse = chatGPTresponse {
                 
-                // この辺で感情の値を取り出せる！好きに使ってね！
+                // happinessの値をプロパティに設定
+                self.happiness = happiness
+                
                 print("Happiness: \(happiness)")
                 print("Disgust: \(disgust)")
                 print("Neutral: \(neutral)")
@@ -148,7 +135,6 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
                 print("chatGPTresponse: \(chatGPTresponse)")
                 
                 DispatchQueue.main.async {
-                    
                     let maxEmotionValue = max(happiness, disgust, neutral, sadness, anger)
                     if maxEmotionValue == happiness {
                         self.waveView.waveColor = UIColor(red: 255/255.0, green: 198/255.0, blue: 51/255.0, alpha: 1.0)
@@ -176,6 +162,16 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
+    @IBAction func next(_ sender: UIButton) {
+        if happiness >= 0.02 {
+            let goodVC = GoodFirstViewController()
+            navigationController?.pushViewController(goodVC, animated: true)
+        } else {
+            let badVC = BadFirstViewController()
+            navigationController?.pushViewController(badVC, animated: true)
+        }
+    }
+
     func presentWaveViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let waveVC = storyboard.instantiateViewController(withIdentifier: "WaveViewController") as? WaveViewController {
@@ -188,5 +184,4 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
         return paths[0]
     }
 }
-
 

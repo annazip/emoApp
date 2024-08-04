@@ -3,7 +3,7 @@
 //  reflectColor
 //
 //  Created by 森杏菜 on 2024/07/21.
-//r
+//
 
 import UIKit
 import Alamofire
@@ -27,7 +27,7 @@ class BadFirstViewController: UIViewController, AVAudioRecorderDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         //        例えば
-        nextButton.isHidden = false
+//        nextButton.isHidden = true
         setupBackgrounds()
         self.navigationItem.hidesBackButton = true
         
@@ -54,6 +54,16 @@ class BadFirstViewController: UIViewController, AVAudioRecorderDelegate{
         view.sendSubviewToBack(waveView)
         }
     
+    func setupBackgrounds() {
+        eachBackgrounds.forEach { label in
+            label.layer.cornerRadius = 10
+            label.clipsToBounds = true
+        }
+        answerBackgound.layer.borderColor = UIColor(red: 25/255, green: 44/255, blue: 112/255, alpha: 1.0).cgColor
+        answerBackgound.layer.borderWidth = 2.0
+        answerBackgound.clipsToBounds = true
+    }
+    
     @IBAction func back(_ sender: UIButton) {
         let alertController = UIAlertController(title: "確認", message: "今日のふりかえりを終了しますか？", preferredStyle: .alert)
         
@@ -79,24 +89,16 @@ class BadFirstViewController: UIViewController, AVAudioRecorderDelegate{
             for case let button as UIButton in buttonContainer?.subviews ?? [] {
                 if button.title(for: .normal) == "終了" {
                     button.setTitleColor(.red, for: .normal)
-                    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17) // 太字に設定
+                   
                 } else if button.title(for: .normal) == "戻る" {
                     button.setTitleColor(.blue, for: .normal)
-                    button.titleLabel?.font = UIFont.systemFont(ofSize: 17) // 細字に設定
+                  
                 }
             }
         }
     }
     
-    func setupBackgrounds() {
-        eachBackgrounds.forEach { label in
-            label.layer.cornerRadius = 10
-            label.clipsToBounds = true
-        }
-        answerBackgound.layer.borderColor = UIColor(red: 25/255, green: 44/255, blue: 112/255, alpha: 1.0).cgColor
-        answerBackgound.layer.borderWidth = 2.0
-        answerBackgound.clipsToBounds = true
-    }
+    
     
             @IBAction func startRecording(_ sender: UIButton) {
                 if !isRecording {
