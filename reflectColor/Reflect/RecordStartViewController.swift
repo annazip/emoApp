@@ -90,10 +90,8 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
             for case let button as UIButton in buttonContainer?.subviews ?? [] {
                 if button.title(for: .normal) == "終了" {
                     button.setTitleColor(.red, for: .normal)
-                    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17) // 太字に設定
                 } else if button.title(for: .normal) == "戻る" {
                     button.setTitleColor(.blue, for: .normal)
-                    button.titleLabel?.font = UIFont.systemFont(ofSize: 17) // 細字に設定
                 }
             }
         }
@@ -150,11 +148,20 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
                 DispatchQueue.main.async {
                     
                     let maxEmotionValue = max(happiness, disgust, neutral, sadness, anger)
+                    if maxEmotionValue == happiness {
+                        self.waveView.waveColor = UIColor(red: 255/255.0, green: 198/255.0, blue: 51/255.0, alpha: 1.0)
+                    }
+                    if maxEmotionValue == disgust {
+                        self.waveView.waveColor = UIColor(red: 94/255.0, green: 69/255.0, blue: 120/255.0, alpha: 1.0)
+                    }
                     if maxEmotionValue == neutral {
                         self.waveView.waveColor = .gray
                     }
                     if maxEmotionValue == sadness {
-                        self.waveView.waveColor = .blue
+                        self.waveView.waveColor = UIColor(red: 79/255.0, green: 119/255.0, blue: 167/255.0, alpha: 1.0)
+                    }
+                    if maxEmotionValue == anger {
+                        self.waveView.waveColor = UIColor(red: 122/255.0, green: 40/255.0, blue: 40/255.0, alpha: 1.0)
                     }
                     // 例えば取り出せた文章を出せるよね
                     self.answerBackgound.text = text
