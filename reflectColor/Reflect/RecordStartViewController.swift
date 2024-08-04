@@ -1,3 +1,10 @@
+//
+//  RecordStartViewController.swift
+//  reflectColor
+//
+//  Created by 森杏菜 on 2024/06/23.
+//
+
 import UIKit
 import Alamofire
 import AVFoundation
@@ -75,7 +82,7 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
             let alertView = alertController.view.subviews.first
             let containerView = alertView?.subviews.first
             let buttonContainer = containerView?.subviews.first
-
+            
             for case let button as UIButton in buttonContainer?.subviews ?? [] {
                 if button.title(for: .normal) == "終了" {
                     button.setTitleColor(.red, for: .normal)
@@ -88,6 +95,7 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func startRecording(_ sender: UIButton) {
         if !isRecording {
+            // スタートする時
             isRecording = true
             let audioFilename = getDocumentsDirectory().appendingPathComponent("recording2.raw")
             recordingURL = audioFilename
@@ -110,6 +118,7 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
                 print("Failed to start recording: \(error)")
             }
         } else {
+            // 録音停止する時
             audioRecorder?.stop()
             audioRecorder = nil
             print("Recording stopped")
@@ -171,7 +180,7 @@ class RecordStartViewController: UIViewController, AVAudioRecorderDelegate {
             navigationController?.pushViewController(badVC, animated: true)
         }
     }
-
+    
     func presentWaveViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let waveVC = storyboard.instantiateViewController(withIdentifier: "WaveViewController") as? WaveViewController {

@@ -52,6 +52,8 @@ class BadFirstViewController: UIViewController, AVAudioRecorderDelegate{
         waveView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(waveView)
         view.sendSubviewToBack(waveView)
+        
+        
         }
     
     func setupBackgrounds() {
