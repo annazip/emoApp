@@ -29,7 +29,7 @@ class BadSecondViewController: UIViewController, AVAudioRecorderDelegate{
         //        例えば
         nextButton.isHidden = false
         setupBackgrounds()
-        
+        self.navigationItem.hidesBackButton = true
         
                 AVAudioSession.sharedInstance().requestRecordPermission { granted in
                     if granted {

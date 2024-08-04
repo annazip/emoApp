@@ -135,8 +135,13 @@ class APIManager {
     func chatGpt(rawData:String, flag:Int, completion: @escaping (String?) -> Void){
         
         if flag == 0{
-            messageString = "下記の文章と下記の条件を参考にしてください。＃文章\(rawData)＃条件・今日の出来事を10字以内で要約・全体の返答としては、「お話をまとめると、今日は[出来事]が主な出来事だと感じました。正しいですか？」に当てはめて返答するように。"
+            messageString =
+            "下記の文章と下記の条件を参考にしてください。＃文章\(rawData)＃条件・今日の出来事を感情に重点を置いて10字以内で要約・全体の返答としては、「お話をまとめると、今日は[出来事]が主な出来事だと感じました。正しいですか？」に当てはめて返答するように。・[出来事]には鉤括弧をつけないように。"
         }else if flag == 1{
+            messageString = "ほにゃらら"
+        }else if flag == 2{
+            messageString = "ほにゃらら"
+        }else if flag == 3{
             messageString = "ほにゃらら"
         }
         
