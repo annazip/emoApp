@@ -158,7 +158,7 @@
             </objects>
             <point key="canvasLocation" x="2915.2671755725191" y="695.77464788732402"/>
         </scene>
-        <!--過去をふりかえる-->
+        <!--Memory Home View Controller-->
         <scene sceneID="i39-2G-aaX">
             <objects>
                 <viewController id="pZV-Sh-ySs" customClass="MemoryHomeViewController" customModule="reflectColor" customModuleProvider="target" sceneMemberID="viewController">
@@ -177,7 +177,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <segue destination="Wux-OT-BA5" kind="show" id="w5s-k5-EwH"/>
+                                    <segue destination="Wux-OT-BA5" kind="show" id="oNT-8Y-yuZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02z-ad-Fqi">
@@ -193,9 +193,8 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Xm-D0-1KH"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.96862745098039216" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="過去をふりかえる" image="clock.arrow.2.circlepath" catalog="system" id="pt0-Jm-obf"/>
                     <navigationItem key="navigationItem" id="6fM-IL-Nhg"/>
                     <connections>
                         <outlet property="calendar" destination="8Pp-f7-OF7" id="7aV-x9-Qf3"/>
@@ -204,14 +203,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXy-3Y-3o6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7941" y="-38"/>
+            <point key="canvasLocation" x="8866.4122137404574" y="-38.028169014084511"/>
         </scene>
         <!--Memory Detail View Controller-->
         <scene sceneID="qNq-2c-mo5">
             <objects>
                 <viewController id="Wux-OT-BA5" customClass="MemoryDetailViewController" customModule="reflectColor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RtI-wd-KfO">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YYYY/MM/DD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvG-cg-ldi">
@@ -222,7 +221,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YA2-M9-YVk">
-                                <rect key="frame" x="24" y="130" width="345" height="627"/>
+                                <rect key="frame" x="24" y="130" width="345" height="620"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -305,7 +304,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hpL-Vg-Mx0"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.96862745100000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="ouG-8I-7Qb"/>
                     <connections>
@@ -314,7 +313,7 @@
                         <outletCollection property="eachBackgrounds" destination="t3v-jn-bAn" collectionClass="NSMutableArray" id="ZZR-qD-qYB"/>
                         <outletCollection property="eachBackgrounds" destination="FFs-LZ-z21" collectionClass="NSMutableArray" id="hej-NG-Zct"/>
                         <outletCollection property="eachBackgrounds" destination="fB0-dL-h16" collectionClass="NSMutableArray" id="ePJ-tE-ZDh"/>
-                        <segue destination="37P-4T-7Ur" kind="show" id="Wvj-eV-jBU"/>
+                        <segue destination="37P-4T-7Ur" kind="show" identifier="HalfModal" id="n9m-NV-4Nc"/>
                     </connections>
                 </viewController>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XEo-UY-Pwk">
@@ -398,14 +397,14 @@
                 </label>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rY5-ce-GvT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8956" y="-38"/>
+            <point key="canvasLocation" x="9881.6793893129761" y="-38.028169014084511"/>
         </scene>
         <!--Memory More Detail View Controller-->
         <scene sceneID="FNd-cU-wNf">
             <objects>
                 <viewController id="37P-4T-7Ur" customClass="MemoryMoreDetailViewController" customModule="reflectColor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jX8-Wd-YmH">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsB-Ui-BZo">
@@ -426,16 +425,17 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gmq-Us-ob6"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.96862745100000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="am9-MA-opX"/>
+                    <navigationItem key="navigationItem" id="Uw5-Xx-evE"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="label" destination="TsB-Ui-BZo" id="93Z-kF-JIK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtV-NL-70W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9763" y="-38"/>
+            <point key="canvasLocation" x="10689.312977099236" y="-38.028169014084511"/>
         </scene>
         <!--Bad First View Controller-->
         <scene sceneID="jEO-JG-veG">
@@ -1211,25 +1211,6 @@
             </objects>
             <point key="canvasLocation" x="4318" y="1385"/>
         </scene>
-        <!--過去をふりかえる-->
-        <scene sceneID="da9-bG-dWl">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wRY-i1-7j3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="過去をふりかえる" image="clock.arrow.2.circlepath" catalog="system" id="cQo-NY-DWy"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GhO-oO-wYy">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="pZV-Sh-ySs" kind="relationship" relationship="rootViewController" id="YBH-uf-kx0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lhh-Z5-1sQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6779" y="-38"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="RZx-bz-r7R">
             <objects>
@@ -1263,17 +1244,36 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="4l9-OF-nJY"/>
-                        <segue destination="pZV-Sh-ySs" kind="relationship" relationship="viewControllers" id="G5d-bi-8hp"/>
+                        <segue destination="Yzx-vh-Vdm" kind="relationship" relationship="viewControllers" id="G5d-bi-8hp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhd-AR-O7m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3841.9847328244273" y="-38.028169014084511"/>
         </scene>
+        <!--過去をふりかえる-->
+        <scene sceneID="AQJ-Yc-WwV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yzx-vh-Vdm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="過去をふりかえる" image="clock.arrow.2.circlepath" catalog="system" id="pt0-Jm-obf"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="FRH-fW-h8F"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gXD-r1-nje">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pZV-Sh-ySs" kind="relationship" relationship="rootViewController" id="xp7-q8-hPs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nkC-FI-MxH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7939.6946564885493" y="-38.028169014084511"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="U8h-gx-OHZ"/>
-        <segue reference="G5d-bi-8hp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.right.circle" catalog="system" width="128" height="123"/>
@@ -1288,7 +1288,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
